@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/portfolio-page/static/css/main.61fc30ab.css",
+    "main.js": "/portfolio-page/static/js/main.bdbaad5d.js",
+    "static/js/787.28a6522c.chunk.js": "/portfolio-page/static/js/787.28a6522c.chunk.js",
+    "static/media/Instant-Noodles.webp": "/portfolio-page/static/media/Instant-Noodles.75e48ebe91e1b6b7ddad.webp",
+    "static/media/Jeans.webp": "/portfolio-page/static/media/Jeans.cceea30443397f4d42a5.webp",
+    "static/media/JavaScript.webp": "/portfolio-page/static/media/JavaScript.38d15448d65a7cd91bf9.webp",
+    "index.html": "/portfolio-page/index.html",
+    "main.61fc30ab.css.map": "/portfolio-page/static/css/main.61fc30ab.css.map",
+    "main.bdbaad5d.js.map": "/portfolio-page/static/js/main.bdbaad5d.js.map",
+    "787.28a6522c.chunk.js.map": "/portfolio-page/static/js/787.28a6522c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.61fc30ab.css",
+    "static/js/main.bdbaad5d.js"
+  ]
+}
