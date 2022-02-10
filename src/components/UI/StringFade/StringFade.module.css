@@ -1,0 +1,48 @@
+.fadeIn {
+  animation-name: fade-in;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+
+.fadeOut {
+  animation-name: fade-out;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+
+.fadeStart {
+  opacity: 0;
+  transform: translateX(-15px);
+}
+
+.static {
+  opacity: 1;
+  transform: translateX(0px);
+}
+
+.fadeEnd {
+  opacity: 0;
+  transform: translateX(15px);
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateX(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(15px);
+  }
+}

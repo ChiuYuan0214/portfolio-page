@@ -1,0 +1,20 @@
+
+.slideshow {
+  background-color: transparent;
+  position: fixed;
+  top: calc(50vh - 250px);
+  height: 500px;
+  width: 2500px;
+  z-index: 10;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.slide {
+  /* position: relative;
+  z-index: 20; */
+  background-color: transparent;
+  width: 300px;
+  height: 80%;
+  margin: auto;
+}

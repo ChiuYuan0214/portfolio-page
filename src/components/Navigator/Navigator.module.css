@@ -1,0 +1,37 @@
+.nav {
+  position: fixed;
+  z-index: 200;
+  top: 0;
+  right: 0;
+  height: 5rem;
+  width: 5rem;
+}
+
+.nav > div {
+  position: absolute;
+  background-color: white;
+  height: 0.2rem;
+  width: 3rem;
+}
+
+.upline {
+  top: 2rem;
+  transform: rotate(0);
+  transition: all .3s ease-out;
+}
+
+.downline {
+  top: 3rem;
+  transform: rotate(0);
+  transition: all .3s ease-out;
+}
+
+.upOn {
+  top: 2.5rem;
+  transform: rotate(45deg);
+}
+
+.downOn {
+  top: 2.5rem;
+  transform: rotate(-45deg);
+}

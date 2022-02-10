@@ -1,0 +1,9 @@
+{
+  "short_name": "Adam's Portfolio",
+  "name": "Adam's portfolio web page",
+  "icons": [],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
