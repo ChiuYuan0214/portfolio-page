@@ -2,28 +2,3 @@
   background-color: black;
   height: 100vh;
 }
-
-.headline {
-  color: white;
-  font-size: 4rem;
-  margin: 7rem 0 1rem;
-  text-align: center;
-}
-
-.textBlock1 {
-  height: 200px;
-  background-color: grey;
-  margin: 5rem 0;
-}
-
-.textBlock2 {
-  height: 500px;
-  background-color: grey;
-  margin: 5rem 0;
-}
-
-.textBlock3 {
-  height: 700px;
-  background-color: grey;
-  margin: 5rem 0;
-}

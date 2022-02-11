@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-import Wrapper from "./components/Wrapper/Wrapper";
 import Navigator from "./components/Navigator/Navigator";
+import MainPage from "./components/MainPage/MainPage";
 
 import styles from "./App.module.css";
 
@@ -13,17 +13,12 @@ function App() {
   };
 
   return (
-    <section>
+    <>
       <Navigator isNav={isNav} toggleNav={toggleIsNavHandler} />
       <main className={styles.main}>
-        <Wrapper>
-          <h1 className={styles.headline}>Welcome to my page</h1>
-          <div className={styles.textBlock1}></div>
-          <div className={styles.textBlock2}></div>
-          <div className={styles.textBlock3}></div>
-        </Wrapper>
+        <MainPage />
       </main>
-    </section>
+    </>
   );
 }
 

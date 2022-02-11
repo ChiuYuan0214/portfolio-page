@@ -9,29 +9,32 @@
 
 .nav > div {
   position: absolute;
-  background-color: white;
   height: 0.2rem;
   width: 3rem;
 }
 
 .upline {
+  background-color: white;
   top: 2rem;
   transform: rotate(0);
-  transition: all .3s ease-out;
+  transition: all 0.3s ease-out;
 }
 
 .downline {
+  background-color: white;
   top: 3rem;
   transform: rotate(0);
-  transition: all .3s ease-out;
+  transition: all 0.3s ease-out;
 }
 
 .upOn {
+  background-color: black;
   top: 2.5rem;
   transform: rotate(45deg);
 }
 
 .downOn {
+  background-color: black;
   top: 2.5rem;
   transform: rotate(-45deg);
 }

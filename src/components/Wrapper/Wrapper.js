@@ -5,7 +5,7 @@ import IntroTitle from "../IntroTitle/IntroTitle";
 
 import styles from "./Wrapper.module.css";
 
-const startSlidePoint = 1000; // for container
+const startSlidePoint = 1800; // for container
 const slideStartLeft = 2500; // for slideshow (left)
 const rate = 1.5;
 const isSlideOut = true;
@@ -16,10 +16,18 @@ slideScrollLength += 100;
 const Wrapper = ({ children }) => {
   const [height, setHight] = useState(0);
   const [slidePos, setSlidePos] = useState(slideStartLeft);
+  const [clienX, setClientX] = useState(null);
+  const [clientY, setClientY] = useState(null)
   // const [scrollDirection, setScrollDirection] = useState();
 
   const wrapperRef = useRef();
   const viewHeight = window.innerHeight;
+
+  const clickHandler = (event) => {
+    console.dir(event);
+    setClientX(event.clientX);
+    setClientY(event.clientY);
+  };
 
   // const autoScroll = (num) => {
   //   for (let i = 0; i < 30; i++) {
@@ -80,10 +88,15 @@ const Wrapper = ({ children }) => {
         // onWheel={onWheelHandler}
         className={styles.wrapper}
       >
-        <div className={styles.inner}>{children}</div>
+        <div
+          className={styles.inner}
+          onClick={clickHandler}
+        >
+          {children}
+        </div>
       </div>
       <IntroTitle height={height} rate={1} />
-      <SlideShow slidePos={slidePos} />
+      <SlideShow slidePos={slidePos} clientX={clienX} clientY={clientY} />
     </section>
   );
 };

@@ -1,34 +1,29 @@
 import React from "react";
 
 import SlideCard from "./SlideCard/SlideCard";
+import { PROJECT_LIST } from "../../data/project";
 
 import styles from "./SlideShow.module.css";
 
-import slide1Src from "../../assets/images/Instant-Noodles.webp";
-import slide2Src from "../../assets/images/JavaScript.webp";
-import slide3Src from "../../assets/images/Jeans.webp";
-
-const SlideShow = ({ slidePos }) => {
+const SlideShow = ({ slidePos, clientX, clientY }) => {
+  const cardList = PROJECT_LIST.map((prj) => {
+    let { title, desc, imageSrc } = prj;
+    title = title.toUpperCase();
+    desc = desc.toUpperCase();
+    return (
+      <SlideCard
+        title={title}
+        desc={desc}
+        imageSrc={imageSrc}
+        className={styles.slide}
+        x={clientX}
+        y={clientY}
+      />
+    );
+  });
   return (
     <div className={styles.slideshow} style={{ left: `${slidePos}px` }}>
-      <SlideCard
-        title="SOME DUMMY NAME"
-        desc="SOME DUMMY INFO"
-        imageSrc={slide1Src}
-        className={styles.slide}
-      />
-      <SlideCard
-        title="SOME DUMMY NAME"
-        desc="SOME DUMMY INFO"
-        imageSrc={slide2Src}
-        className={styles.slide}
-      />
-      <SlideCard
-        title="SOME DUMMY NAME"
-        desc="SOME DUMMY INFO"
-        imageSrc={slide3Src}
-        className={styles.slide}
-      />
+      {cardList}
     </div>
   );
 };

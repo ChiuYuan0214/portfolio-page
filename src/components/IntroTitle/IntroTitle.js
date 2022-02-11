@@ -18,7 +18,7 @@ const IntroTitle = ({ height, rate }) => {
       setTitle2X(1800 - (height - startSlidePoint) / rate);
     }
 
-    const maxDistance = startSlidePoint + 1000 * rate + 4500;
+    const maxDistance = startSlidePoint + 1000 * rate + 6800;
 
     if (height >= maxDistance && height <= maxDistance + 600) {
       setTitle1Y(200 - height + maxDistance);
