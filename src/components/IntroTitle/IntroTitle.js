@@ -21,12 +21,17 @@ const IntroTitle = ({ slideChange, height, rate }) => {
     const maxDistance = startSlidePoint + 1000 * rate + 6800;
 
     if (height >= maxDistance && height <= maxDistance + 600) {
+      console.log("set in condition1");
+      console.log("height:", height);
       setTitle1Y(200 - height + maxDistance);
       setTitle2Y(280 - height + maxDistance);
     } else if (slideChange && height < maxDistance) {
+      console.log('set in condition2');
       setTitle1Y(200);
       setTitle2Y(280);
     } else if (slideChange && height > maxDistance + 600) {
+      console.log("set in condition3");
+      console.log("height:", height);
       setTitle1Y(200 - 600);
       setTitle2Y(280 - 600);
     }

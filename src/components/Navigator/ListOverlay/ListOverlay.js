@@ -11,8 +11,8 @@ const ListOverlay = ({ toggleNav, isNav }) => {
 
   const scrollPageHandler = (id) => {
     const targetElement = document.getElementById(id);
-    const targetHeight = targetElement.offsetTop - 50;
-    setTargetHeight(targetHeight);
+    const targetHeight = targetElement.offsetTop;
+    setTargetHeight(id === "home" ? targetHeight : targetHeight - 50);
     toggleTargetOn();
     toggleNav();
   };

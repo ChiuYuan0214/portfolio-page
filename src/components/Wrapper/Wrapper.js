@@ -35,7 +35,6 @@ const Wrapper = ({ children }) => {
   const viewHeight = window.innerHeight;
 
   const clickHandler = (event) => {
-    console.dir(event);
     setClientX(event.clientX);
     setClientY(event.clientY);
   };
@@ -43,7 +42,7 @@ const Wrapper = ({ children }) => {
   const scrollHandler = () => {
     const scrollTop = wrapperRef.current.scrollTop;
     const newHeight = scrollTop + viewHeight;
-    setHeight(newHeight);
+      setHeight(newHeight);
   };
 
   useEffect(() => {
@@ -53,7 +52,6 @@ const Wrapper = ({ children }) => {
     ) {
       setSlidePos(slideStartLeft - (height - startSlidePoint) / rate);
     } else if (slideChange) {
-      console.log("height in wrapper:", height);
       setSlidePos(slideStartLeft - (height - startSlidePoint) / rate);
       toggleSlideChange();
     }
@@ -61,8 +59,9 @@ const Wrapper = ({ children }) => {
 
   useEffect(() => {
     if (targetOn) {
-      console.log("wrapper scrolled!");
-      wrapperRef.current.scrollTo({ top: targetHeight, behavior: "smooth" });
+      wrapperRef.current.scrollTo({ top: targetHeight});
+      console.log("targetHeight in wrapper", targetHeight);
+      console.log("new height in wrapper", targetHeight + viewHeight);
       setHeight(targetHeight + viewHeight);
       toggleTargetOn();
       toggleSlideChange();
