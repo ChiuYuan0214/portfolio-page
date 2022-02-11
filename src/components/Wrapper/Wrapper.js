@@ -1,5 +1,6 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useContext, useRef, useState, useEffect } from "react";
 
+import PositionContext from "../../store/position-context";
 import SlideShow from "../SlideShow/SlideShow";
 import IntroTitle from "../IntroTitle/IntroTitle";
 
@@ -9,16 +10,26 @@ const startSlidePoint = 1800; // for container
 const slideStartLeft = 2500; // for slideshow (left)
 const rate = 1.5;
 const isSlideOut = true;
+
 let slideScrollLength = isSlideOut ? slideStartLeft * 2 : slideStartLeft;
 slideScrollLength += 100;
-// container should longer than 3000 + 3000 * 3
 
 const Wrapper = ({ children }) => {
-  const [height, setHight] = useState(0);
+  const ctx = useContext(PositionContext);
+  const {
+    height,
+    clientX,
+    clientY,
+    targetHeight,
+    targetOn,
+    slideChange,
+    setHeight,
+    setClientY,
+    setClientX,
+    toggleTargetOn,
+    toggleSlideChange,
+  } = ctx;
   const [slidePos, setSlidePos] = useState(slideStartLeft);
-  const [clienX, setClientX] = useState(null);
-  const [clientY, setClientY] = useState(null)
-  // const [scrollDirection, setScrollDirection] = useState();
 
   const wrapperRef = useRef();
   const viewHeight = window.innerHeight;
@@ -29,74 +40,55 @@ const Wrapper = ({ children }) => {
     setClientY(event.clientY);
   };
 
-  // const autoScroll = (num) => {
-  //   for (let i = 0; i < 30; i++) {
-  //     setTimeout(() => {
-  //       wrapperRef.current.scrollBy({
-  //         top: num * 2 / (i + 1),
-  //         left: 0,
-  //         behavior: "smooth",
-  //       });
-  //     }, i > 10 ? 100 : i * 5 + 50);
-  //   }
-  // };
-
-  // const scrollEffect = () => {
-  //   if (scrollDirection === "DOWN") {
-  //     autoScroll(60);
-  //   } else {
-  //     autoScroll(-60);
-  //   }
-  // };
-
-  // let timer;
-
-  // const onWheelHandler = () => {
-  //   if (timer) {
-  //     clearTimeout(timer);
-  //   }
-  //   timer = setTimeout(() => {
-  //     scrollEffect();
-  //   }, 150);
-  // };
-
-  useEffect(() => {
-    if (
-      height >= startSlidePoint && // 3000
-      height <= startSlidePoint + slideScrollLength * rate // 12000
-    ) {
-      setSlidePos(slideStartLeft - (height - startSlidePoint) / rate);
-    }
-  }, [height]);
-
   const scrollHandler = () => {
     const scrollTop = wrapperRef.current.scrollTop;
     const newHeight = scrollTop + viewHeight;
-    // if (newHeight > height) {
-    //   setScrollDirection("DOWN");
-    // } else {
-    //   setScrollDirection("UP");
-    // }
-    setHight(newHeight);
+    setHeight(newHeight);
   };
+
+  useEffect(() => {
+    if (
+      height >= startSlidePoint &&
+      height <= startSlidePoint + slideScrollLength * rate
+    ) {
+      setSlidePos(slideStartLeft - (height - startSlidePoint) / rate);
+    } else if (slideChange) {
+      console.log("height in wrapper:", height);
+      setSlidePos(slideStartLeft - (height - startSlidePoint) / rate);
+      toggleSlideChange();
+    }
+  }, [height, slideChange, toggleSlideChange]);
+
+  useEffect(() => {
+    if (targetOn) {
+      console.log("wrapper scrolled!");
+      wrapperRef.current.scrollTo({ top: targetHeight, behavior: "smooth" });
+      setHeight(targetHeight + viewHeight);
+      toggleTargetOn();
+      toggleSlideChange();
+    }
+  }, [
+    targetOn,
+    setHeight,
+    targetHeight,
+    toggleTargetOn,
+    toggleSlideChange,
+    viewHeight,
+  ]);
 
   return (
     <section>
       <div
         ref={wrapperRef}
         onScrollCapture={scrollHandler}
-        // onWheel={onWheelHandler}
         className={styles.wrapper}
       >
-        <div
-          className={styles.inner}
-          onClick={clickHandler}
-        >
+        <div className={styles.inner} onClick={clickHandler}>
           {children}
         </div>
       </div>
-      <IntroTitle height={height} rate={1} />
-      <SlideShow slidePos={slidePos} clientX={clienX} clientY={clientY} />
+      <IntroTitle slideChange={slideChange} height={height} rate={1} />
+      <SlideShow slidePos={slidePos} clientX={clientX} clientY={clientY} />
     </section>
   );
 };

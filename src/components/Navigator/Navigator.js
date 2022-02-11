@@ -14,7 +14,7 @@ const Navigator = ({toggleNav, isNav}) => {
             className={`${styles.downline} ${isNav ? styles.downOn : ""}`}
           ></div>
         </div>
-        <ListOverlay isNav={isNav} />
+        <ListOverlay toggleNav={toggleNav} isNav={isNav} />
       </header>
     );
 };

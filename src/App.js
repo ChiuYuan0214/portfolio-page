@@ -15,6 +15,7 @@ function App() {
   return (
     <>
       <Navigator isNav={isNav} toggleNav={toggleIsNavHandler} />
+      <div id="home"></div>
       <main className={styles.main}>
         <MainPage />
       </main>

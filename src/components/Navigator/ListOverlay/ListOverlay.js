@@ -1,11 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
+import PositionContext from "../../../store/position-context";
 import StringFade from "../../UI/StringFade/StringFade";
 
 import styles from "./ListOverlay.module.css";
 
-const ListOverlay = ({ isNav }) => {
+const ListOverlay = ({ toggleNav, isNav }) => {
   const [modal, setModal] = useState(false);
+  const {setTargetHeight, toggleTargetOn} = useContext(PositionContext);
+
+  const scrollPageHandler = (id) => {
+    const targetElement = document.getElementById(id);
+    const targetHeight = targetElement.offsetTop - 50;
+    setTargetHeight(targetHeight);
+    toggleTargetOn();
+    toggleNav();
+  };
 
   useEffect(() => {
     let timer;
@@ -25,8 +35,10 @@ const ListOverlay = ({ isNav }) => {
   }, [isNav]);
 
   const linkList = ["HOME", "ABOUT", "PROJECT", "CONTACT"];
-  const links = linkList.map((str, idx) => (
-    <li>
+  const links = linkList.map((str, idx) => {
+    const id = str.toLowerCase();
+    return (
+    <li onClick={scrollPageHandler.bind(null, id)}>
       <StringFade
         isOn={isNav}
         string={str}
@@ -35,7 +47,8 @@ const ListOverlay = ({ isNav }) => {
         className={styles.link}
       />
     </li>
-  ));
+  )});
+  
   return (
     <section className={`${styles.listModal} ${modal ? styles.onNav : ""}`}>
       {links}

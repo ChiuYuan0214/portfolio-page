@@ -1,0 +1,172 @@
+.container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 900px;
+  margin: 5rem 0;
+  padding: 0;
+  background-color: black;
+  border-top: 1px solid rgb(229, 148, 236);
+  border-bottom: 1px solid rgb(229, 148, 236);
+}
+
+.about {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: rgb(229, 148, 236);
+  width: 0;
+  /* border-top: 1px solid black;
+  border-bottom: 1px solid black; */
+  overflow: hidden;
+}
+
+.aboutEnter {
+  animation: enter-expand .6s ease-in;
+}
+
+.aboutStatic {
+  width: calc(100% - 10rem);
+  /* border-top: 1px solid rgb(229, 148, 236);
+  border-bottom: 1px solid rgb(229, 148, 236); */
+}
+
+.aboutExit {
+  animation: exit-expand .6s ease-out;
+}
+
+.about h2 {
+  height: 2.4rem;
+  margin: 7rem 0 5rem;
+  display: block;
+  color: black;
+  opacity: 0;
+  font-size: 4rem;
+  text-align: center;
+  letter-spacing: 1rem;
+}
+
+.slideIn {
+  display: block;
+  color: black;
+  opacity: 0;
+  transform: translateY(-30px);
+  width: 60%;
+  margin: 1rem auto;
+  font-size: 1rem;
+  font-weight: bold;
+  line-height: 2.2;
+  font-family:Arial, Helvetica, sans-serif;
+  /* letter-spacing: .3px; */
+}
+
+.aboutStatic .slideIn {
+  animation: slide-in 0.5s ease-out forwards;
+}
+
+.aboutStatic h2 {
+  animation: fade-in 1s ease-out forwards;
+}
+
+.contactBox {
+  margin-top: auto;
+  align-self: flex-end;
+}
+
+.contact {
+  color: rgb(229, 148, 236);
+  font-size: 1.5rem;
+  font-weight: bold;
+  position: relative;
+  margin: 0 10rem 7rem 0;
+  z-index: 1;
+  animation: rotate 10s linear infinite;
+}
+
+.contact::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  background-color: black;
+  top: -42px;
+  left: -11px;
+  width: 0rem;
+  height: 0rem;
+  border-radius: 50%;
+  transform: scale(0);
+}
+
+.aboutStatic .contact::after {
+  width: 7rem;
+  height: 7rem;
+  animation: enlarge 0.3s ease-out forwards;
+  animation-delay: 1.5s;
+}
+
+@keyframes enter-expand {
+  0% {
+    width: 0;
+    /* border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent; */
+  }
+  100% {
+    width: calc(100% - 10rem);
+    /* border-top: 1px solid white;
+    border-bottom: 1px solid white; */
+  }
+}
+
+@keyframes exit-expand {
+  0% {
+    width: calc(100% - 10rem);
+    /* border-top: 1px solid white;
+    border-bottom: 1px solid white; */
+  }
+  100% {
+    width: 0;
+    /* border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent; */
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  80% {
+    opacity: 0.5;
+    transform: translateY(-5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes enlarge {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
