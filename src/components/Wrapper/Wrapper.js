@@ -15,7 +15,7 @@ const isSlideOut = true;
 
 let slideScrollLength = isSlideOut ? slideStartLeft + slideShowWidth : slideStartLeft;
 
-const projectContentHeight = slideScrollLength;
+const projectContentHeight = viewWidth <= 500 ? slideScrollLength - 1000 : slideScrollLength;
 
 const Wrapper = ({ children }) => {
   const ctx = useContext(PositionContext);

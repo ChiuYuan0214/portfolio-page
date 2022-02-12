@@ -16,8 +16,8 @@ import {
 
 import styles from "./MainPage.module.css";
 
-let contentHeight = window.innerWidth * 2 + 6500;
-contentHeight += window.innerWidth > 500 ? 500 : 0;
+let contentHeight = window.innerWidth * 2 + 5000;
+contentHeight += window.innerWidth > 500 ? 2000 : 0;
 
 const MainPage = () => {
   const { height } = useContext(PositionContext);
