@@ -5,7 +5,7 @@ import StringReducer from "../../UI/StringReducer/StringReducer";
 
 import styles from "./SlideCard.module.css";
 
-const SlideCard = ({ title, desc, imageSrc, className, x, y }) => {
+const SlideCard = ({ title, desc, imageSrc, demoUrl, githubUrl, tags, className, x, y }) => {
   const [isZoom, setIsZoom] = useState(false);
   const [onModal, setOnModal] = useState(false);
   const [descOnShow, setDescOnShow] = useState(false);
@@ -75,6 +75,9 @@ const SlideCard = ({ title, desc, imageSrc, className, x, y }) => {
         title={title}
         imageSrc={imageSrc}
         desc={desc}
+        demoUrl={demoUrl}
+        githubUrl={githubUrl}
+        tags={tags}
         onClose={toggleModalHandler}
       />
     </>

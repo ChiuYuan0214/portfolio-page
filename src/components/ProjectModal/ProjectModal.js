@@ -5,7 +5,7 @@ import BackDrop from "../UI/BackDrop/BackDrop";
 
 import styles from "./ProjectModal.module.css";
 
-const SlideCard = ({ onModal, imageSrc, title, desc, onClose }) => {
+const SlideCard = ({ onModal, imageSrc, title, desc, demoUrl, githubUrl, tags, onClose }) => {
   const [isClosing, setIsClosing] = useState(false);
   const [closed, setClosed] = useState(true);
 
@@ -27,6 +27,8 @@ const SlideCard = ({ onModal, imageSrc, title, desc, onClose }) => {
     }
   }, [onModal]);
 
+  const tagList = tags.map((tag) => <p>{tag}</p>);
+
   const Modal = () => {
     return (
       <>
@@ -39,8 +41,19 @@ const SlideCard = ({ onModal, imageSrc, title, desc, onClose }) => {
             <img src={imageSrc} alt={title} />
             <h2>{title}</h2>
             <p>{desc}</p>
-            <div onClick={onClose} className={styles.btn}>
-              Close
+            <div className={styles.control}>
+              <div onClick={onClose} className={styles.btn}>
+                Close
+              </div>
+              <div className={styles.link}>
+                <a rel="noreferrer" target="_blank" href={demoUrl}>
+                  Demo site
+                </a>
+                <a rel="noreferrer" target="_blank" href={githubUrl}>
+                  Github
+                </a>
+                <div className={styles.tags}>{tagList}</div>
+              </div>
             </div>
           </section>
         )}

@@ -39,4 +39,7 @@
   border: 0.5px solid white;
   display: block;
 }
+.info p {
+  font-size: .8rem;
+}
 }
