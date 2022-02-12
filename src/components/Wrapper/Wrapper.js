@@ -6,13 +6,16 @@ import IntroTitle from "../IntroTitle/IntroTitle";
 
 import styles from "./Wrapper.module.css";
 
+const viewWidth = window.innerWidth;
+const slideShowWidth = 2500;
 const startSlidePoint = 1800; // for container
-const slideStartLeft = 2500; // for slideshow (left)
+const slideStartLeft = viewWidth + 1200; // for slideshow (left)
 const rate = 1.5;
 const isSlideOut = true;
 
-let slideScrollLength = isSlideOut ? slideStartLeft * 2 : slideStartLeft;
-slideScrollLength += 100;
+let slideScrollLength = isSlideOut ? slideStartLeft + slideShowWidth : slideStartLeft;
+
+const projectContentHeight = slideScrollLength;
 
 const Wrapper = ({ children }) => {
   const ctx = useContext(PositionContext);
@@ -42,7 +45,7 @@ const Wrapper = ({ children }) => {
   const scrollHandler = () => {
     const scrollTop = wrapperRef.current.scrollTop;
     const newHeight = scrollTop + viewHeight;
-      setHeight(newHeight);
+    setHeight(newHeight);
   };
 
   useEffect(() => {
@@ -59,9 +62,7 @@ const Wrapper = ({ children }) => {
 
   useEffect(() => {
     if (targetOn) {
-      wrapperRef.current.scrollTo({ top: targetHeight});
-      console.log("targetHeight in wrapper", targetHeight);
-      console.log("new height in wrapper", targetHeight + viewHeight);
+      wrapperRef.current.scrollTo({ top: targetHeight });
       setHeight(targetHeight + viewHeight);
       toggleTargetOn();
       toggleSlideChange();
@@ -86,8 +87,17 @@ const Wrapper = ({ children }) => {
           {children}
         </div>
       </div>
-      <IntroTitle slideChange={slideChange} height={height} rate={1} />
-      <SlideShow slidePos={slidePos} clientX={clientX} clientY={clientY} />
+      <IntroTitle
+        contentHeight={projectContentHeight}
+        slideChange={slideChange}
+        height={height}
+        rate={1}
+      />
+      <SlideShow
+        slidePos={slidePos}
+        clientX={clientX}
+        clientY={clientY}
+      />
     </section>
   );
 };

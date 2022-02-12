@@ -38,3 +38,23 @@
   top: 2.5rem;
   transform: rotate(-45deg);
 }
+
+@media (min-width: 0px) and (max-width: 500px) {
+  .nav > div {
+    width: 2rem;
+    left: 1rem;
+  }
+
+  .upline {
+    top: 2rem;
+  }
+
+  .downline {
+    top: 2.5rem;
+  }
+
+  .upOn,
+  .downOn {
+    top: 2.25rem;
+  }
+}

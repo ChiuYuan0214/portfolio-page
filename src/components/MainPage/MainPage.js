@@ -15,6 +15,9 @@ import {
 
 import styles from "./MainPage.module.css";
 
+let contentHeight = window.innerWidth * 2 + 6500;
+contentHeight += window.innerWidth > 500 ? 500 : 0;
+
 const MainPage = () => {
   const { height } = useContext(PositionContext);
   const [block1IsShow, setBlock1IsShow] = useState(false);
@@ -33,7 +36,6 @@ const MainPage = () => {
       0 <= block1RectY + block1OffsetHeight
     ) {
       setBlock1IsShow(true);
-      console.log("block1IsShow was changed!");
     } else if (
       block1IsShow &&
       (window.innerHeight < block1RectY || block1RectY + block1OffsetHeight < 0)
@@ -69,7 +71,7 @@ const MainPage = () => {
         )}
       </div>
       <div id="project" className={styles.textBlock4}></div>
-      <div ref={block2Ref} className={styles.textBlock2}>
+      <div ref={block2Ref} style={{height: contentHeight}}>
         {block2IsShow && (
           <>
             <p className={styles.fadeIn}>{SELF_INTRODUCTION_1}</p>

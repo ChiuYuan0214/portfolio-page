@@ -2,41 +2,78 @@ import React, { useState, useEffect } from "react";
 
 import styles from "./IntroTitle.module.css";
 
-const startSlidePoint = 1500;
+const viewWidth = window.innerWidth;
+ const startSlidePoint = viewWidth <= 500 ? 1000 : 1500;
+const initialTitle1X = -500;
+const initialTitle2X = viewWidth + Math.abs(initialTitle1X);
+const lineGap = viewWidth <= 500 ? 40 : 80;
+const initialTitle1Y = 200;
+const initialTitle2Y = initialTitle1Y + lineGap;
+const moveLeftPointRate = viewWidth <= 500 ? 3.5 : 5;
+const title1XMaxVal =
+  Math.abs(initialTitle1X) + viewWidth / 2 - viewWidth / moveLeftPointRate;
+const title2XMaxVal =
+  initialTitle2X - viewWidth + viewWidth / 2 + viewWidth / moveLeftPointRate;
+  
 
-const IntroTitle = ({ slideChange, height, rate }) => {
-  const [title1X, setTitle1X] = useState(-500);
-  const [title2X, setTitle2X] = useState(1800);
-  const [title1Y, setTitle1Y] = useState(200);
-  const [title2Y, setTitle2Y] = useState(280);
+const IntroTitle = ({ slideChange, height, rate, contentHeight }) => {
+  const [title1X, setTitle1X] = useState(initialTitle1X);
+  const [title2X, setTitle2X] = useState(initialTitle2X);
+  const [title1Y, setTitle1Y] = useState(initialTitle1Y);
+  const [title2Y, setTitle2Y] = useState(initialTitle2Y);
 
   useEffect(() => {
-    if (slideChange || (height >= startSlidePoint && height <= startSlidePoint + 900 * rate)) {
-      setTitle1X(-500 + (height - startSlidePoint) / rate);
-    }
-    if (slideChange || (height >= startSlidePoint && height <= startSlidePoint + 1300 * rate)) {
-      setTitle2X(1800 - (height - startSlidePoint) / rate);
+    const viewHeight = window.innerHeight;
+
+    // if (slideChange || (height >= startSlidePoint && height <= startSlidePoint + 900 * rate)) {
+    //   setTitle1X(-500 + (height - startSlidePoint) / rate);
+    // }
+    // if (slideChange || (height >= startSlidePoint && height <= startSlidePoint + 1300 * rate)) {
+    //   setTitle2X(1800 - (height - startSlidePoint) / rate);
+    // }
+
+    if (
+      slideChange ||
+      (height >= startSlidePoint &&
+        height <= startSlidePoint + title1XMaxVal * rate)
+    ) {
+      setTitle1X(initialTitle1X + (height - startSlidePoint) / rate);
+    } else if (slideChange) {
+      if (height < startSlidePoint) {
+        setTitle1X(initialTitle1X);
+      } else {
+        setTitle1X(title1XMaxVal);
+      }
     }
 
-    const maxDistance = startSlidePoint + 1000 * rate + 6800;
+    if (
+      height >= startSlidePoint &&
+      height <= startSlidePoint - 20 + title2XMaxVal * rate
+    ) {
+      setTitle2X(initialTitle2X - (height - startSlidePoint) / rate);
+    } else if (slideChange) {
+      if (height < startSlidePoint) {
+        setTitle2X(initialTitle2X);
+      } else {
+        setTitle2X(title2XMaxVal);
+      }
+    }
 
-    if (height >= maxDistance && height <= maxDistance + 600) {
-      console.log("set in condition1");
-      console.log("height:", height);
-      setTitle1Y(200 - height + maxDistance);
-      setTitle2Y(280 - height + maxDistance);
+    let maxDistance = startSlidePoint + title2XMaxVal * rate + contentHeight + viewWidth + 1000;
+    maxDistance += viewWidth <= 500 ? 300 : 0;
+
+    if (height >= maxDistance && height <= maxDistance + viewHeight) {
+      setTitle1Y(initialTitle1Y - height + maxDistance);
+      setTitle2Y(initialTitle2Y - height + maxDistance);
     } else if (slideChange && height < maxDistance) {
-      console.log('set in condition2');
-      setTitle1Y(200);
-      setTitle2Y(280);
-    } else if (slideChange && height > maxDistance + 600) {
-      console.log("set in condition3");
-      console.log("height:", height);
-      setTitle1Y(200 - 600);
-      setTitle2Y(280 - 600);
+      setTitle1Y(initialTitle1Y);
+      setTitle2Y(initialTitle2Y);
+    } else if (slideChange && height > maxDistance + viewHeight) {
+      setTitle1Y(initialTitle1Y - viewHeight);
+      setTitle2Y(initialTitle2Y - viewHeight);
     }
-  }, [height, rate, slideChange]);
-  
+  }, [height, rate, slideChange, contentHeight]);
+
   return (
     <>
       <h2

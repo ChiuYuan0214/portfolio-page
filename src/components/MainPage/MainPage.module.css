@@ -17,11 +17,6 @@
   font-size: 2rem;
 }
 
-.fadeIn {
-  opacity: 0.1;
-  animation: fade-in 4s forwards;
-}
-
 .textBlock2 {
   height: 500px;
   background-color: transparent;
@@ -33,9 +28,14 @@
   line-height: 1.5;
 }
 
-.textBlock3 {
-  height: 8300px;
+.fadeIn {
+  opacity: 0.1;
+  animation: fade-in 4s forwards;
 }
+
+/* .textBlock3 {
+  height: 8300px;
+} */
 
 @keyframes fade-in {
   from {
@@ -46,11 +46,37 @@
   }
 }
 
-
 .contact {
   background-color: grey;
   color: black;
   font-size: 7rem;
   text-align: center;
   height: 300px;
+}
+
+@media (min-width: 0px) and (max-width: 500px) {
+  .headline {
+    font-size: 2.5rem;
+    margin: 4rem 0 1rem;
+  }
+
+  .textBlock1 {
+    height: 200px;
+    width: 90%;
+    margin: 7rem auto;
+  }
+
+  .intro {
+    font-size: 1rem;
+  }
+
+  .textBlock2 {
+    height: 500px;
+    width: 90%;
+    line-height: 2;
+  }
+
+  .fadeIn {
+    font-size: 0.7rem;
+  }
 }

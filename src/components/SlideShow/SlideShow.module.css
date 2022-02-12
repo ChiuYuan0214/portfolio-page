@@ -1,4 +1,3 @@
-
 .slideshow {
   background-color: transparent;
   position: fixed;
@@ -17,4 +16,10 @@
   width: 555px;
   height: 80%;
   margin: auto;
+}
+
+@media (min-width: 0px) and (max-width: 500px) {
+  .slide {
+    width: 280px;
+  }
 }

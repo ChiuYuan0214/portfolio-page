@@ -1,6 +1,13 @@
 .title1,
 .title2 {
-    color: white;
-    font-size: 5rem;
-    position: fixed;
+  color: white;
+  font-size: 5rem;
+  position: fixed;
+}
+
+@media (min-width: 0px) and (max-width: 500px) {
+  .title1,
+  .title2 {
+    font-size: 2.5rem;
+  }
 }
