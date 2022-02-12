@@ -2,13 +2,14 @@ import React from "react";
 
 import styles from "./StringTwinkle.module.css";
 
-const StringTwinkle = React.memo(({ string }) => {
+const StringTwinkle = React.memo(({ string, isShort }) => {
   const strArr = string.split("");
   const length = strArr.length;
+  const rate = isShort ? 2 : 3;
 
   const indexList = [];
 
-  while (indexList.length < length / 3) {
+  while (indexList.length < length / rate) {
     const randomIndex = Math.floor(Math.random() * (length + 1));
     if (!indexList.includes(randomIndex)) {
       indexList.push(randomIndex);
@@ -20,7 +21,7 @@ const StringTwinkle = React.memo(({ string }) => {
     let style = {};
     if (indexList.includes(index)) {
       classes = styles.twinkle;
-      if (indexList.findIndex((num) => num === index) % 3 === 0) {
+      if (indexList.findIndex((num) => num === index) % rate === 0) {
         style = { animationDelay: "0.5s" };
       }
     }

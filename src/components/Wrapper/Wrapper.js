@@ -8,7 +8,7 @@ import styles from "./Wrapper.module.css";
 
 const viewWidth = window.innerWidth;
 const slideShowWidth = 2500;
-const startSlidePoint = 1800; // for container
+const startSlidePoint = viewWidth > 500 ? 1800 : 0; // for container
 const slideStartLeft = viewWidth + 1200; // for slideshow (left)
 const rate = 1.5;
 const isSlideOut = true;

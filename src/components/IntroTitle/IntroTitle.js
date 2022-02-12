@@ -32,8 +32,7 @@ const IntroTitle = ({ slideChange, height, rate, contentHeight }) => {
     //   setTitle2X(1800 - (height - startSlidePoint) / rate);
     // }
 
-    if (
-      slideChange ||
+    if (    
       (height >= startSlidePoint &&
         height <= startSlidePoint + title1XMaxVal * rate)
     ) {
@@ -42,7 +41,7 @@ const IntroTitle = ({ slideChange, height, rate, contentHeight }) => {
       if (height < startSlidePoint) {
         setTitle1X(initialTitle1X);
       } else {
-        setTitle1X(title1XMaxVal);
+        setTitle1X(viewWidth / 2 - viewWidth / moveLeftPointRate);
       }
     }
 
@@ -55,7 +54,7 @@ const IntroTitle = ({ slideChange, height, rate, contentHeight }) => {
       if (height < startSlidePoint) {
         setTitle2X(initialTitle2X);
       } else {
-        setTitle2X(title2XMaxVal);
+        setTitle2X(viewWidth / 2 - viewWidth / moveLeftPointRate + 20);
       }
     }
 

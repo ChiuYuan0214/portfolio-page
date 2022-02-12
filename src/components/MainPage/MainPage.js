@@ -4,6 +4,7 @@ import PositionContext from "../../store/position-context";
 import Wrapper from "../Wrapper/Wrapper";
 import StringTwinkle from "../UI/StringTwinkle/StringTwinkle";
 import AboutBlock from "./AboutBlock/AboutBlock";
+import ContactBlock from "./ContactBlock/ContactBlock";
 
 import {
   INTRO1,
@@ -71,7 +72,7 @@ const MainPage = () => {
         )}
       </div>
       <div id="project" className={styles.textBlock4}></div>
-      <div ref={block2Ref} style={{height: contentHeight}}>
+      <div ref={block2Ref} style={{height: contentHeight}} className={styles.textBlock2}>
         {block2IsShow && (
           <>
             <p className={styles.fadeIn}>{SELF_INTRODUCTION_1}</p>
@@ -82,7 +83,7 @@ const MainPage = () => {
       </div>
       <div className={styles.textBlock3}></div>
       <AboutBlock />
-      <div id="contact" className={styles.contact}>Contact</div>
+      <ContactBlock />
     </Wrapper>
   );
 };
