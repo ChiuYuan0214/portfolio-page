@@ -7,9 +7,12 @@ const Project1Movie = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      videoRef.current.play();
+      if (videoRef.current) {
+        videoRef.current.play();
+      }
     }, 1000);
   }, []);
+
   return (
     <video muted controls ref={videoRef}>
       <source src={movieSrc} type="video/mp4" />

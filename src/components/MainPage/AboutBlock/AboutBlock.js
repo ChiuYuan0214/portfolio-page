@@ -13,8 +13,14 @@ import styles from "./AboutBlock.module.css";
 
 const AboutBlock = () => {
   const [aboutIsShow, setAboutIsShow] = useState(false);
-  const { height } = useContext(PositionContext);
+  const { height, setTargetHeight, toggleTargetOn } = useContext(PositionContext);
   const aboutRef = useRef();
+
+  const scrollPageHandler = () => {
+    const targetHeight = document.getElementById("contact").offsetTop;
+    setTargetHeight(targetHeight);
+    toggleTargetOn();
+  };
 
   useEffect(() => {
     const aboutRectY = aboutRef.current.getBoundingClientRect().y;
@@ -61,7 +67,9 @@ const AboutBlock = () => {
             {SELF_INTRODUCTION_3}
           </p>
           <div className={styles.contactBox}>
-            <div className={styles.contact}>Contact</div>
+            <div className={styles.contact} onClick={scrollPageHandler}>
+              Contact
+            </div>
           </div>
         </div>
       </CSSTransition>
