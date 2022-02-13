@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkportfolio_page=self.webpackChunkportfolio_page||[]).push([[55],{55:function(e,o,t){t.r(o);var r=t(791),u=t(918),s=t(184);o.default=function(){var e=(0,r.useRef)();return(0,r.useEffect)((function(){setTimeout((function(){e.current.play()}),1e3)}),[]),(0,s.jsxs)("video",{muted:!0,controls:!0,ref:e,children:[(0,s.jsx)("source",{src:u,type:"video/mp4"}),"Your browser did not support the video format."]})}},918:function(e,o,t){e.exports=t.p+"static/media/E-commerce.202e484d1bf3f4395ed1.mp4"}}]);
+//# sourceMappingURL=55.ca81c027.chunk.js.map
