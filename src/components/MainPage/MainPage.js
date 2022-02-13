@@ -9,9 +9,13 @@ import ContactBlock from "./ContactBlock/ContactBlock";
 import {
   INTRO1,
   INTRO2,
-  SELF_INTRODUCTION_1,
-  SELF_INTRODUCTION_2,
-  SELF_INTRODUCTION_3,
+  // SELF_INTRODUCTION_1,
+  // SELF_INTRODUCTION_2,
+  // SELF_INTRODUCTION_3,
+  BIO_1,
+  BIO_2,
+  BIO_JAP_1,
+  BIO_JAP_2,
 } from "../../data/copy";
 
 import styles from "./MainPage.module.css";
@@ -78,9 +82,10 @@ const MainPage = () => {
       >
         {block2IsShow && (
           <>
-            <p className={styles.fadeIn}>{SELF_INTRODUCTION_1}</p>
-            <p className={styles.fadeIn}>{SELF_INTRODUCTION_2}</p>
-            <p className={styles.fadeIn}>{SELF_INTRODUCTION_3}</p>
+            <p className={styles.fadeIn}>{BIO_JAP_1}</p>
+            <p className={styles.fadeIn}>{BIO_JAP_2}</p>
+            <p className={styles.fadeIn}>{BIO_1}</p>
+            <p className={styles.fadeIn}>{BIO_2}</p>
           </>
         )}
       </div>

@@ -7,6 +7,7 @@ import {
   SELF_INTRODUCTION_1,
   SELF_INTRODUCTION_2,
   SELF_INTRODUCTION_3,
+  SELF_INTRODUCTION_4,
 } from "../../../data/copy";
 
 import styles from "./AboutBlock.module.css";
@@ -65,6 +66,9 @@ const AboutBlock = () => {
           </p>
           <p className={styles.slideIn} style={{ animationDelay: ".7s" }}>
             {SELF_INTRODUCTION_3}
+          </p>
+          <p className={styles.slideIn} style={{ animationDelay: ".9s" }}>
+            {SELF_INTRODUCTION_4}
           </p>
           <div className={styles.contactBox}>
             <div className={styles.contact} onClick={scrollPageHandler}>
