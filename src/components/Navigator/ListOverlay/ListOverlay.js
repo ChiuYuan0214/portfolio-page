@@ -5,14 +5,20 @@ import StringFade from "../../UI/StringFade/StringFade";
 
 import styles from "./ListOverlay.module.css";
 
+const viewWidth = window.innerWidth;
+
 const ListOverlay = ({ toggleNav, isNav }) => {
   const [modal, setModal] = useState(false);
   const {setTargetHeight, toggleTargetOn} = useContext(PositionContext);
 
   const scrollPageHandler = (id) => {
-    const targetElement = document.getElementById(id);
-    const targetHeight = targetElement.offsetTop;
-    setTargetHeight(id === "home" ? targetHeight : targetHeight - 50);
+    if (id === 'project') {
+      setTargetHeight(viewWidth <= 500 ? 2070 : 4092);
+    } else {
+      const targetElement = document.getElementById(id);
+      const targetHeight = targetElement.offsetTop;
+      setTargetHeight(id === "home" ? targetHeight : targetHeight - 50);
+    }
     toggleTargetOn();
     toggleNav();
   };
@@ -38,7 +44,7 @@ const ListOverlay = ({ toggleNav, isNav }) => {
   const links = linkList.map((str, idx) => {
     const id = str.toLowerCase();
     return (
-    <li onClick={scrollPageHandler.bind(null, id)}>
+    <li onClick={scrollPageHandler.bind(null, id)} key={idx}>
       <StringFade
         isOn={isNav}
         string={str}
@@ -52,7 +58,11 @@ const ListOverlay = ({ toggleNav, isNav }) => {
   return (
     <section className={`${styles.listModal} ${modal ? styles.onNav : ""}`}>
       {links}
-      <span>
+      <a
+        rel="noreferrer"
+        target="_blank"
+        href="https://www.facebook.com/adam.chiu.73/"
+      >
         <StringFade
           isOn={isNav}
           string="FACEBOOK"
@@ -60,8 +70,12 @@ const ListOverlay = ({ toggleNav, isNav }) => {
           delay={300}
           className={styles.contact}
         />
-      </span>
-      <span>
+      </a>
+      <a
+        rel="noreferrer"
+        target="_blank"
+        href="https://www.instagram.com/chiuyuan0214/"
+      >
         <StringFade
           isOn={isNav}
           string="INSTAGRAM"
@@ -69,8 +83,8 @@ const ListOverlay = ({ toggleNav, isNav }) => {
           delay={400}
           className={styles.contact}
         />
-      </span>
-      <span>
+      </a>
+      <a href="tel:0902-350-579">
         <StringFade
           isOn={isNav}
           string="0902-350-579"
@@ -78,7 +92,7 @@ const ListOverlay = ({ toggleNav, isNav }) => {
           delay={500}
           className={styles.contact}
         />
-      </span>
+      </a>
     </section>
   );
 };

@@ -41,24 +41,32 @@ const ContactBlock = () => {
               <h3>
                 <StringTwinkle string="My Contact Information" isShort={true} />
               </h3>
-              <p>
+              <a
+                rel="noreferrer"
+                target="_blank"
+                href="https://www.facebook.com/adam.chiu.73/"
+              >
                 <StringTwinkle string="Facebook: Adam Chiu" isShort={true} />
-              </p>
-              <p>
+              </a>
+              <a
+                rel="noreferrer"
+                target="_blank"
+                href="https://www.instagram.com/chiuyuan0214/"
+              >
                 <StringTwinkle
                   string="Instagram: chiuyuan0214"
                   isShort={true}
                 />
-              </p>
-              <p>
+              </a>
+              <a href="mailto:rumble88481@gmail.com">
                 <StringTwinkle
                   string="E-mail: rumble88481@gmail.com.tw"
                   isShort={true}
                 />
-              </p>
-              <p>
+              </a>
+              <a href="tel:0902-350-579">
                 <StringTwinkle string="Phone: 0902-350-579" isShort={true} />
-              </p>
+              </a>
               <span className={styles.japan}>
                 ※メールへの対応は少しの時間がかかるので、もしお急ぎの場合、どうか携帯で連絡して下さい。
               </span>

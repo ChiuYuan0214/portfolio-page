@@ -26,13 +26,19 @@
   letter-spacing: 2px;
 }
 
-.info p {
+.info a {
+  display: block;
+  text-decoration: none;
+  color: white;
   font-size: 1.8rem;
   font-weight: bold;
   letter-spacing: 2px;
+  margin-bottom: .7rem;
 }
 
 .japan {
+  display: block;
+  margin-top: 2rem;
   font-size: 1rem;
   opacity: 0;
   animation: fade-in 4s ease-out forwards;
@@ -83,7 +89,7 @@
     letter-spacing: 0px;
   }
 
-  .info p {
+  .info a {
     font-size: 1rem;
     letter-spacing: 0px;
   }

@@ -12,6 +12,7 @@ const SlideShow = ({ slidePos, clientX, clientY }) => {
     desc = desc.toUpperCase();
     return (
       <SlideCard
+        key={title}
         title={title}
         desc={desc}
         imageSrc={imageSrc}
@@ -24,6 +25,7 @@ const SlideShow = ({ slidePos, clientX, clientY }) => {
       />
     );
   });
+
   return (
     <div className={styles.slideshow} style={{ left: `${slidePos}px` }}>
       {cardList}

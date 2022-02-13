@@ -27,7 +27,7 @@ const SlideCard = ({ onModal, imageSrc, title, desc, demoUrl, githubUrl, tags, o
     }
   }, [onModal]);
 
-  const tagList = tags.map((tag) => <p>{tag}</p>);
+  const tagList = tags.map((tag) => <p key={tag}>{tag}</p>);
 
   const Modal = () => {
     return (

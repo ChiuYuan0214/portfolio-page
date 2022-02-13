@@ -71,8 +71,11 @@ const MainPage = () => {
           </>
         )}
       </div>
-      <div id="project" className={styles.textBlock4}></div>
-      <div ref={block2Ref} style={{height: contentHeight}} className={styles.textBlock2}>
+      <div
+        ref={block2Ref}
+        style={{ height: contentHeight }}
+        className={styles.textBlock2}
+      >
         {block2IsShow && (
           <>
             <p className={styles.fadeIn}>{SELF_INTRODUCTION_1}</p>
@@ -81,7 +84,6 @@ const MainPage = () => {
           </>
         )}
       </div>
-      <div className={styles.textBlock3}></div>
       <AboutBlock />
       <ContactBlock />
     </Wrapper>

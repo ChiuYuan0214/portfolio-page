@@ -50,7 +50,7 @@ const Wrapper = ({ children }) => {
 
   useEffect(() => {
     if (
-      height >= startSlidePoint &&
+      !slideChange && height >= startSlidePoint &&
       height <= startSlidePoint + slideScrollLength * rate
     ) {
       setSlidePos(slideStartLeft - (height - startSlidePoint) / rate);
