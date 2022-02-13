@@ -16,7 +16,8 @@
   animation-fill-mode: forwards;
 }
 
-.modal img {
+.modal img,
+.modal video {
   display: block;
   width: 80%;
   max-height: 45%;
