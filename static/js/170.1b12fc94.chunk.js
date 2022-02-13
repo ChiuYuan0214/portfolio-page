@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkportfolio_page=self.webpackChunkportfolio_page||[]).push([[170],{170:function(e,t,o){o.r(t);var r=o(791),u=o(442),n=o(184);t.default=function(){var e=(0,r.useRef)();return(0,r.useEffect)((function(){setTimeout((function(){e.current.play()}),1e3)}),[]),(0,n.jsxs)("video",{muted:!0,controls:!0,ref:e,children:[(0,n.jsx)("source",{src:u,type:"video/mp4"}),"Your browser did not support the video format."]})}},442:function(e,t,o){e.exports=o.p+"static/media/Calendar.3a168ef97cbbf26aae20.mp4"}}]);
-//# sourceMappingURL=170.1b12fc94.chunk.js.map
