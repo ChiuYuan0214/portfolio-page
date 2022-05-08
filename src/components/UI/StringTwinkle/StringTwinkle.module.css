@@ -6,6 +6,7 @@
   animation: twinkle 1s forwards;
 }
 
+/* general effect */
 @keyframes fade-in {
   0% {
     opacity: 0;
@@ -15,6 +16,7 @@
   }
 }
 
+/* imitate twinkle effect */
 @keyframes twinkle {
   0% {
     opacity: 0;

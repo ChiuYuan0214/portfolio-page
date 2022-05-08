@@ -23,26 +23,32 @@ export const PositionProvider = ({ children }) => {
   const [targetOn, setTargetOn] = useState(false);
   const [slideChange, setSlideChange] = useState(false);
 
+  // scrollTop + viewport height
   const setHeightHandler = (height) => {
     setHeight(height);
   };
 
+  // clientX
   const setClientXHandler = (x) => {
     setClientX(x);
   };
 
+  // clientY
   const setClientYHandler = (y) => {
     setClientY(y);
   };
 
+  // the position of target block ( a state for anchor tag )
   const setTargetHeightHandler = (height) => {
     setTargetHeight(height);
   };
 
+  // true when jumping through anchor tag, false when not.
   const toggleTargetOnHandler = () => {
     setTargetOn(prev => !prev);
   };
 
+  // will only be true after targetOn has been set to true. ( a state for adjusting slideshow position )
   const toggleSlideChangeHandler = () => {
     setSlideChange(prev => !prev);
   };

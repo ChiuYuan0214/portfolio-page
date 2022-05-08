@@ -6,6 +6,7 @@ import StringReducer from "../../UI/StringReducer/StringReducer";
 import styles from "./SlideCard.module.css";
 
 const SlideCard = ({ title, desc, imageSrc, demoUrl, githubUrl, tags, className, x, y }) => {
+  // inherit clientX and clientY through props.
   const [isZoom, setIsZoom] = useState(false);
   const [onModal, setOnModal] = useState(false);
   const [descOnShow, setDescOnShow] = useState(false);
@@ -27,6 +28,7 @@ const SlideCard = ({ title, desc, imageSrc, demoUrl, githubUrl, tags, className,
     setOnModal((prev) => !prev);
   };
 
+  // to check if the click position match within the card.
   useEffect(() => {
     const minX = cardRef.current.getBoundingClientRect().x;
     const maxX = minX + cardRef.current.offsetWidth;
@@ -37,11 +39,13 @@ const SlideCard = ({ title, desc, imageSrc, demoUrl, githubUrl, tags, className,
     }
   }, [x, y]);
 
+  // to check the current position of card, for desc displaying.
   let descLeft = null;
   if (descRef.current) {
     descLeft = descRef.current.getBoundingClientRect().x;
   }
 
+  // set descOnShow to true if desc is within viewport.
   useEffect(() => {
     if (descLeft && descLeft < viewWidth * 0.7 && descLeft > viewWidth * -0.3) {
       setDescOnShow(true);

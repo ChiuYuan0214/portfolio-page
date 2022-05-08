@@ -25,6 +25,7 @@
   transform: translateX(15px);
 }
 
+/* from left to center when fading in */
 @keyframes fade-in {
   from {
     opacity: 0;
@@ -36,6 +37,7 @@
   }
 }
 
+/* from center to right when fading-out */
 @keyframes fade-out {
   from {
     opacity: 1;

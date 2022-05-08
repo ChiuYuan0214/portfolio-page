@@ -5,13 +5,23 @@ import BackDrop from "../UI/BackDrop/BackDrop";
 
 import styles from "./ProjectModal.module.css";
 
-const Project1Movie = React.lazy(() => import('./ProjectMovie/Project1Movie'));
+const Project1Movie = React.lazy(() => import("./ProjectMovie/Project1Movie"));
 const Project2Movie = React.lazy(() => import("./ProjectMovie/Project2Movie"));
 
-const SlideCard = ({ onModal, imageSrc, title, desc, demoUrl, githubUrl, tags, onClose }) => {
+const SlideCard = ({
+  onModal,
+  imageSrc,
+  title,
+  desc,
+  demoUrl,
+  githubUrl,
+  tags,
+  onClose,
+}) => {
   const [isClosing, setIsClosing] = useState(false);
   const [closed, setClosed] = useState(true);
 
+  // close the modal 500ms later after close button was clicked.
   useEffect(() => {
     if (isClosing) {
       setTimeout(() => {
@@ -21,6 +31,7 @@ const SlideCard = ({ onModal, imageSrc, title, desc, demoUrl, githubUrl, tags, o
     }
   }, [isClosing]);
 
+  // set isClosing to false if onModal.
   useEffect(() => {
     if (onModal) {
       setIsClosing(false);

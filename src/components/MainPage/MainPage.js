@@ -9,9 +9,6 @@ import ContactBlock from "./ContactBlock/ContactBlock";
 import {
   INTRO1,
   INTRO2,
-  // SELF_INTRODUCTION_1,
-  // SELF_INTRODUCTION_2,
-  // SELF_INTRODUCTION_3,
   BIO_1,
   BIO_2,
   BIO_JAP_1,
@@ -20,6 +17,7 @@ import {
 
 import styles from "./MainPage.module.css";
 
+// set the content height when first time loading.
 let contentHeight = window.innerWidth * 2 + 5000;
 contentHeight += window.innerWidth > 500 ? 2000 : 0;
 
@@ -31,10 +29,13 @@ const MainPage = () => {
   const block2Ref = useRef();
 
   useEffect(() => {
+    // get the current position data of block1 and block2.
     const block1RectY = block1Ref.current.getBoundingClientRect().y;
     const block2RectY = block2Ref.current.getBoundingClientRect().y;
     const block1OffsetHeight = block1Ref.current.offsetHeight;
     const block2OffsetHeight = block2Ref.current.offsetHeight;
+
+    // determine if block1 should mount based on current height.
     if (
       !block1IsShow &&
       window.innerHeight > block1RectY &&
@@ -48,6 +49,7 @@ const MainPage = () => {
       setBlock1IsShow(false);
     }
 
+    // determine if block2 should mount based on current height.
     if (
       !block2IsShow &&
       window.innerHeight > block2RectY &&
@@ -64,6 +66,7 @@ const MainPage = () => {
 
   return (
     <Wrapper>
+      <div id="home"></div>
       <h1 className={styles.headline}>WELCOME TO MY PAGE</h1>
       <div ref={block1Ref} className={styles.textBlock1}>
         {block1IsShow && (

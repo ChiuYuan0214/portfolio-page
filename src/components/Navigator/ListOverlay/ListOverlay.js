@@ -5,6 +5,7 @@ import StringFade from "../../UI/StringFade/StringFade";
 
 import styles from "./ListOverlay.module.css";
 
+// detect the viewport width only the first time.
 const viewWidth = window.innerWidth;
 
 const ListOverlay = ({ toggleNav, isNav }) => {
@@ -12,17 +13,22 @@ const ListOverlay = ({ toggleNav, isNav }) => {
   const {setTargetHeight, toggleTargetOn} = useContext(PositionContext);
 
   const scrollPageHandler = (id) => {
+    // can't set the anchor for project block, so specify the height instead.
     if (id === 'project') {
       setTargetHeight(viewWidth <= 500 ? 2070 : 4092);
     } else {
+      // get the offsetTop of element for other block.
       const targetElement = document.getElementById(id);
       const targetHeight = targetElement.offsetTop;
       setTargetHeight(id === "home" ? targetHeight : targetHeight - 50);
     }
+    // reset the toggle target state to false after scrolling.
     toggleTargetOn();
+    // close the navbar modal.
     toggleNav();
   };
 
+  // close the modal 700ms later after close button was clicked.
   useEffect(() => {
     let timer;
     if (isNav) {

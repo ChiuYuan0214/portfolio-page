@@ -16,7 +16,7 @@
 .lineX {
   position: fixed;
   z-index: 302;
-  top: 33vh; /* 200px */
+  top: 33vh;
   background-color: black;
   height: 1.5px;
   width: 100vw;

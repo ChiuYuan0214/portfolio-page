@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import styles from "./IntroTitle.module.css";
 
+// config values.
 const viewWidth = window.innerWidth;
  const startSlidePoint = viewWidth <= 500 ? 1000 : 1500;
 const initialTitle1X = -500;
@@ -32,11 +33,14 @@ const IntroTitle = ({ slideChange, height, rate, contentHeight }) => {
     //   setTitle2X(1800 - (height - startSlidePoint) / rate);
     // }
 
-    if (    
-      (height >= startSlidePoint &&
-        height <= startSlidePoint + title1XMaxVal * rate)
+    // move title1 when scrolling.
+    if (
+      height >= startSlidePoint &&
+      height <= startSlidePoint + title1XMaxVal * rate
     ) {
       setTitle1X(initialTitle1X + (height - startSlidePoint) / rate);
+
+    // move title1 to respective position when user jump through anchor tags.
     } else if (slideChange) {
       if (height < startSlidePoint) {
         setTitle1X(initialTitle1X);
@@ -45,11 +49,14 @@ const IntroTitle = ({ slideChange, height, rate, contentHeight }) => {
       }
     }
 
+    // move title2 when scrolling.
     if (
       height >= startSlidePoint &&
       height <= startSlidePoint - 20 + title2XMaxVal * rate
     ) {
       setTitle2X(initialTitle2X - (height - startSlidePoint) / rate);
+
+    // move title2 to respective position when user jump through anchor tags.
     } else if (slideChange) {
       if (height < startSlidePoint) {
         setTitle2X(initialTitle2X);
@@ -58,12 +65,17 @@ const IntroTitle = ({ slideChange, height, rate, contentHeight }) => {
       }
     }
 
-    let maxDistance = startSlidePoint + title2XMaxVal * rate + contentHeight + viewWidth + 1000;
+    // max vertical scroll distance for IntroTitle. (unfix if exceed)
+    let maxDistance =
+      startSlidePoint + title2XMaxVal * rate + contentHeight + viewWidth + 1000;
     maxDistance += viewWidth <= 500 ? 300 : 0;
 
+    // if scroll distance already exceed max distance but still within viewport, scroll title up until it leaved the viewport.
     if (height >= maxDistance && height <= maxDistance + viewHeight) {
       setTitle1Y(initialTitle1Y - height + maxDistance);
       setTitle2Y(initialTitle2Y - height + maxDistance);
+
+    // set the vertical position of 2 title to certain value when user jump through anchor tags.
     } else if (slideChange && height < maxDistance) {
       setTitle1Y(initialTitle1Y);
       setTitle2Y(initialTitle2Y);

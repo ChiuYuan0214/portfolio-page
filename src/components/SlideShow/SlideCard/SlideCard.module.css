@@ -15,6 +15,7 @@
   transform: scale(1.5);
 }
 
+/* container for title and description */
 .info {
   color: white;
   margin-top: 1rem;
@@ -33,13 +34,13 @@
 
 @media (min-width: 0px) and (max-width: 500px) {
   .card img {
-  object-fit: cover;
-  height: 55%;
-  background-color: white;
-  border: 0.5px solid white;
-  display: block;
-}
-.info p {
-  font-size: .8rem;
-}
+    object-fit: cover;
+    height: 55%;
+    background-color: white;
+    border: 0.5px solid white;
+    display: block;
+  }
+  .info p {
+    font-size: 0.8rem;
+  }
 }
